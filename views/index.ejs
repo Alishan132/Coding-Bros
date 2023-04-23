@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="hotel-cities" data-cities="<%= JSON.stringify(cities) %>"></div>
+  
+    <%- include("./header") %>
+
+    <div class="hotels" id="hotel">
+      
+      <div class="filterDiv">
+
+        <form action="/#section2" id="section2" class="searchForm" method="GET"  >
+            
+            <div class="inputDiv">
+              <input type="text" id="searchInput" name="city" autocomplete="off" value="<%= searchValues.city %>" placeholder="Enter a destination">
+            <ul class="list"></ul>
+            </div>
+
+            <select class="starSelect" id="userSelect" style="font-family: 'Montserrat', sans-serif;" name="rating">
+              <option value="" style="font-family: 'Montserrat', sans-serif;" >Any</option>
+              <option value="1">⭐</option>
+              <option value="2">⭐⭐</option>
+              <option value="3">⭐⭐⭐</option>
+              <option value="4">⭐⭐⭐⭐</option> 
+              <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+
+            <button type="submit">SEARCH</button>
+        </form>
+
+      </div>
+      <h1></h1>
+      <h1 class="title">
+        Rating of the most popular<br>hotels in Kyrgyzstan that deserve attention
+      </h1>  
+      
+      <div class="hotel-cards">
+       
+        <%  hotels.forEach(hotel => {  %>
+          
+          <div class="hotel-card"> 
+
+            <img src="/images/hotel_photo.png">
+            
+            <div class="card-details">
+              <div>
+              <h3><%= hotel.hotel_name %></h3>
+              <h5 style="color: #5E5E5E	"><%= hotel.city %></h5>
+              <div class="stars">
+                <% for (let a = 0; a < hotel.rating; a ++) {  %>
+                    <img src="/images/star.png">
+                  <% } %>
+              </div>
+  
+            </div>
+            <button id="seeBtn">See</button>
+          </div>
+            
+
+          </div>   
+
+          <% }) %>
+      </div>
+    </div>
+
+    <div class="about">
+      <h1 >Why you should choose us?</h1>
+    </div>
+
+    <div class="customers">
+      <h1>Our Customer Feedback</h1>
+    </div>
+
+    <div class="footer">
+      <h1>GET IN TOUCH</h1>
+    </div>
+
+  </body>
+</html>

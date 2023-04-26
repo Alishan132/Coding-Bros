@@ -63,19 +63,38 @@ nav{
 width: 60px;
 }
 
+.user_pic{
+  position: relative;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  outline: 1px solid black;
+  border-radius: 50%;
+  background-color: lightblue;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+}
+
+.user_pic p {
+  font-family: 'Roboto', sans-serif;
+  /* position: absolute; */
+  font-size: 30px;
+}
+
 .language{
   /* border: none; */
   font-size: 20px;
   padding: 10px;
 }
-
+/* 
 .hotengine-shop-select-language-box { display:inline-block; width:71px; height:30px; overflow:hidden; border:none; background:#fff; line-height:30px; position:relative; top: 15px; z-index:1000; }
 .hotengine-shop-select-language { display:inline-block; width:71px; text-align:center;  }
 .hotengine-shop-select-language-values { display:inline-block; width:69px; vertical-align: top; position:absolute; background:rgba(255, 255, 255, 0.80); left:2px; }
 .hotengine-shop-select-language-box:hover{ overflow:visible;}
 .hotengine-shop-select-language-values:hover .hotengine-shop-select-language-val{ position:relative; }
 .hotengine-shop-select-language-val { width:39px; display:block; margin:0px; padding: 0px 17px; vertical-align:top; cursor:pointer; margin-left:-3px; text-align:center; }
-.hotengine-shop-select-language-val:hover {background:#e8e8e8;}
+.hotengine-shop-select-language-val:hover {background:#e8e8e8;} */
 
 .background_img{
   height: 87%;
@@ -189,7 +208,7 @@ margin-bottom: 30px;
 }
 
 ::-webkit-scrollbar {
-  width: 3px;
+  width: 0px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -268,7 +287,7 @@ margin-bottom: 30px;
 }
 
 .footer{
-  height: 100vh;
+  height: 50vh;
   width: 100%;
   /* background-color: lightcoral; */
   padding-top: 20px;

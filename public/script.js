@@ -4,10 +4,10 @@
 
   const mySelect = document.getElementById('userSelect');
   mySelect.addEventListener('change', function() {
-    localStorage.setItem('selectedOption', this.value);
+    sessionStorage.setItem('selectedOption', this.value);
   });
   
-  const selectedOption = localStorage.getItem('selectedOption');
+  const selectedOption = sessionStorage.getItem('selectedOption');
   if (selectedOption) {
     mySelect.querySelector(`[value="${selectedOption}"]`).selected = true;
   }

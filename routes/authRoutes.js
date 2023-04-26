@@ -15,18 +15,17 @@ router.get("/signin", (req, res) => {
 })
 
 router.post("/signup", async (req, res) => {
-    const { username, email, password } = req.body;
+  const { username, email, password } = req.body;
+  try {
+    const user = await User.create({ username, email, password });
+    const token = createToken(user._id);
 
-    try {
-        const user = await User.create({ username, email, password });
-        const token = createToken(user._id);
-
-        res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-        res.status(201).json({ user: user._id });
-    } catch (error) {
-        const errors = handleErrors(error);
-        res.status(400).json({ errors });
-    }
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.status(201).json({ user: user._id });
+  } catch (error) {
+    const errors = handleErrors(error);
+    res.status(400).json({ errors });
+  }
 });
 
 router.post("/signin", async (req, res) => {

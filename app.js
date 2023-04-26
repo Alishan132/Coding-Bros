@@ -4,9 +4,11 @@ const app = express()
 const db = require("./database")
 const knex = require("./knex")
 
+const Hotel = require("./models/Hotel")
+
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
-const mongodbURI = "mongodb+srv://sam:sam123@nodeexpressproject.eotjdr9.mongodb.net/node-auth";
+const mongodbURI = "mongodb+srv://Alishan:alishan@cluster0.ic7ifil.mongodb.net/test";
 mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true,})
     .then(() => console.log("connected to db"))
     .catch((err) => console.log("error from db is :", err))
@@ -23,21 +25,19 @@ app.use(cookieParser());
 app.use(express.urlencoded({extended : false}))
 
 app.get("/", checkUser, async (req,res) => {
+    
     let where = {}
-    if(req.query.city != null && req.query.city != ""){
-        where.city = req.query.city
+    if(req.query.location != null && req.query.location != ""){
+        where.location = req.query.location
     }
     if(req.query.rating != null && req.query.rating){
         where.rating = req.query.rating
     }
+    console.log(where)
+    const hotels = await Hotel.find(where)
+    const uniqueCities = await Hotel.find().distinct("location")
 
-    const hotels = await knex.select("*").from("hotels").where(where)
-    const uniqueCities = await knex.select("city").distinct().from("hotels")
-    const cities = uniqueCities.map(hotel => {
-            return hotel.city
-    }) 
-
-    res.render("index", {hotels : hotels, searchValues : req.query, cities: cities})
+    res.render("index", {hotels : hotels, searchValues : req.query, cities: uniqueCities})
 })
 
 app.use(authRoutes)

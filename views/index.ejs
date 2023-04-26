@@ -55,7 +55,7 @@
         <form action="/#section2" id="section2" class="searchForm" method="GET"  >
             
             <div class="inputDiv">
-              <input type="text" id="searchInput" name="city" autocomplete="off" value="<%= searchValues.city %>" placeholder="Enter a destination">
+              <input type="text" id="searchInput" name="location" autocomplete="off" value="<%= searchValues.location %>" placeholder="Enter a destination">
             <ul class="list"></ul>
             </div>
 
@@ -87,8 +87,8 @@
             
             <div class="card-details">
               <div>
-              <h3><%= hotel.hotel_name %></h3>
-              <h5 style="color: #5E5E5E	"><%= hotel.city %></h5>
+              <h3><%= hotel.name %></h3>
+              <h5 style="color: #5E5E5E	"><%= hotel.location %></h5>
               <div class="stars">
                 <% for (let a = 0; a < hotel.rating; a ++) {  %>
                     <img src="/images/star.png">
